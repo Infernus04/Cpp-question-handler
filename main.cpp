@@ -1,4 +1,6 @@
-//Below is an example of C++ code that sort the array by Bubble sort
+//Insertion sort - Insert an element from unsorted array to its correct position in sorted array
+
+//Below is an example of C++ code that sort the array by Insertion sort
 
 #include<iostream>
 
@@ -6,44 +8,40 @@ using namespace std;
 
 int main(){
 
-    int n;
-    cout<<"Enter the number of element in your array"<<endl;
-    cin>>n;
-    
-    int arr[n];
-    for (int i = 0; i < n; i++)
+   int n;
+   cout<<"Enter the number of elements in your array"<<endl;
+   cin>>n;
+
+    cout<<"Enter the numbers"<<endl;
+   int arr[n];
+   for (int i = 0; i < n; i++)
+   {
+    cin>>arr[i];
+   }
+
+   for (int i = 1; i < n; i++)
+   {
+    int current = arr[i];
+    int j = i - 1;
+    while (arr[j] > current && j>=0)
     {
-        cin>>arr[i];
+        arr[j+1] = arr[j];
+        j--;
     }
+    arr[j+1] = current;
+    
 
-    int counter = 1 ;
-    while (counter<n)
-    {
-        for (int i = 0; i < n-counter; i++)
-        {
-            if (arr[i] > arr[i+1])
-            {
-                int temp = arr[i];
-                arr[i] = arr[i+1];
-                arr[i+1] = temp;
-            }
-            
-        }
-        counter++;
-        
-    }
+   }
 
-    cout<<"Sorted array is :"<<endl;
+   cout<<"Sorted array is"<<endl;
 
-    for (int i = 0; i < n; i++)
-    {
-        cout<<arr[i]<<" ";
-
-    }
+   for (int i = 0; i < n; i++)
+   {
+    cout<<arr[i]<<" ";
+   }
+   
+   
+   
     
-    
-    
-    
-    
-    return 0;
+ return 0;
 }
