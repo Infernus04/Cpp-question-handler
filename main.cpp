@@ -1,47 +1,32 @@
-//Insertion sort - Insert an element from unsorted array to its correct position in sorted array
+// Below is an example of C++ code that prints the Floyd's triangle
 
-//Below is an example of C++ code that sort the array by Insertion sort
-
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-int main(){
+int main()
+{
+  int n;
+  cout<<"Enter the number of rows : "<<endl;
+  cin>>n;
 
-   int n;
-   cout<<"Enter the number of elements in your array"<<endl;
-   cin>>n;
+  cout<<"Floyd's triangle for given number of rows is"<<endl;
 
-    cout<<"Enter the numbers"<<endl;
-   int arr[n];
-   for (int i = 0; i < n; i++)
-   {
-    cin>>arr[i];
-   }
-
-   for (int i = 1; i < n; i++)
-   {
-    int current = arr[i];
-    int j = i - 1;
-    while (arr[j] > current && j>=0)
+  int count = 1;
+  
+  for (int i = 1; i <= n; i++)
+  {
+    for (int j = 1; j <= i; j++)
     {
-        arr[j+1] = arr[j];
-        j--;
+      cout<<count<<" ";
+      count++;
     }
-    arr[j+1] = current;
+
+    cout<<endl;
     
-
-   }
-
-   cout<<"Sorted array is"<<endl;
-
-   for (int i = 0; i < n; i++)
-   {
-    cout<<arr[i]<<" ";
-   }
-   
-   
-   
-    
- return 0;
+  }
+  
+  
+  
+   return 0;
 }
