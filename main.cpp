@@ -1,60 +1,45 @@
-
-// Printing all the elements of the matrix in spiral order. The pattern continues inward until all elements have been visited
+//Transpose of a square matrix
 
 #include <iostream>
 using namespace std;
 
-int main()
-{
+int main (){
    int n, m;
    cout << "Enter the number of rows :" << endl;
    cin >> n;
    cout << "Enter the number of column :" << endl;
    cin >> m;
 
-   int a[n][m];
+   int A[n][m];
 
    for (int i = 0; i < n; i++)
    {
       cout << "Enter numbers for row" << i + 1 << " :";
       for (int j = 0; j < m; j++)
       {
-         cin >> a[i][j];
+         cin >> A[i][j];
       }
    }
 
-   int row_start = 0, row_end = n - 1, column_start = 0, column_end = m - 1;
-
-   cout<<"Spiral order of the given matrix is :"<<endl;
-   while (row_start <= row_end && column_start <= column_end)
+   for (int i = 0; i < n; i++)
    {
-      // for row start
-      for (int col = column_start; col <= column_end; col++)
+      for (int j = i; j < n; j++)
       {
-         cout << a[row_start][col] << " ";
-      }
-      row_start++;
-
-      // for column end
-      for (int row = row_start; row <= row_end; row++)
-      {
-         cout << a[row][column_end] << " ";
-      }
-      column_end--;
-
-      // for row end
-      for (int col = column_end; col >= column_start; col--)
-      {
-         cout << a[row_end][col] << " ";
-      }
-      row_end--;
-
-      // for column_start
-      for (int row = row_start; row >= row_start; row--)
-      {
-         cout << a[row][column_start] << " ";
-      }
-      column_start++;
+         int temp = A[i][j];
+         A[i][j] = A[j][i];
+         A[j][i] = temp;
+      }  
+      
    }
-   return 0;
+   for (int i = 0; i < 3; i++)
+   {
+      for (int j = 0; j < 3; j++)
+      {
+         cout<<A[j][i]<<endl;
+      }
+      cout<<endl;
+      
+   }
+   
+
 }
