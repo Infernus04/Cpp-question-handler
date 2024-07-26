@@ -1,36 +1,60 @@
-// Below is an example of C++ code that prints the sum of subarray of the given array
+
+// Printing all the elements of the matrix in spiral order. The pattern continues inward until all elements have been visited
 
 #include <iostream>
-
 using namespace std;
 
-int main(){
-
-   int n;
-   cout<<"Enter the number of elements for an array"<<endl;
+int main()
+{
+   int n, m;
+   cout << "Enter the number of rows :" << endl;
    cin >> n;
+   cout << "Enter the number of column :" << endl;
+   cin >> m;
 
-   cout<<"Enter the elements :"<<endl;
+   int a[n][m];
 
-   int arr[n];
    for (int i = 0; i < n; i++)
    {
-      cin >> arr[i];
-   }
-   
-   int sum = 0;
-   for (int i = 0; i < n; i++)
-   {
-      sum = 0;
-      for (int j = i; j < n ; j++)
+      cout << "Enter numbers for row" << i + 1 << " :";
+      for (int j = 0; j < m; j++)
       {
-         sum += arr[j];
-         cout<<sum<<endl;
-      };
-      
-   };
-   
-  
-  
+         cin >> a[i][j];
+      }
+   }
+
+   int row_start = 0, row_end = n - 1, column_start = 0, column_end = m - 1;
+
+   cout<<"Spiral order of the given matrix is :"<<endl;
+   while (row_start <= row_end && column_start <= column_end)
+   {
+      // for row start
+      for (int col = column_start; col <= column_end; col++)
+      {
+         cout << a[row_start][col] << " ";
+      }
+      row_start++;
+
+      // for column end
+      for (int row = row_start; row <= row_end; row++)
+      {
+         cout << a[row][column_end] << " ";
+      }
+      column_end--;
+
+      // for row end
+      for (int col = column_end; col >= column_start; col--)
+      {
+         cout << a[row_end][col] << " ";
+      }
+      row_end--;
+
+      // for column_start
+      for (int row = row_start; row >= row_start; row--)
+      {
+         cout << a[row][column_start] << " ";
+      }
+      column_start++;
+   }
    return 0;
 }
