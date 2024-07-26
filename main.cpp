@@ -1,45 +1,39 @@
-//Transpose of a square matrix
+//Checking palindrome
 
 #include <iostream>
 using namespace std;
 
 int main (){
-   int n, m;
-   cout << "Enter the number of rows :" << endl;
-   cin >> n;
-   cout << "Enter the number of column :" << endl;
-   cin >> m;
+   int n;
+   cout<<"Enter no. of characters in your array"<<endl;
+   cin>>n;  
 
-   int A[n][m];
+   cout<<"Enter the word"<<endl;
+   char arr[n + 1];
+   cin>>arr;
 
-   for (int i = 0; i < n; i++)
-   {
-      cout << "Enter numbers for row" << i + 1 << " :";
-      for (int j = 0; j < m; j++)
-      {
-         cin >> A[i][j];
-      }
-   }
+   bool check =true ;
 
    for (int i = 0; i < n; i++)
    {
-      for (int j = i; j < n; j++)
+      if (arr[i] != arr[n - 1 - i ])
       {
-         int temp = A[i][j];
-         A[i][j] = A[j][i];
-         A[j][i] = temp;
-      }  
-      
-   }
-   for (int i = 0; i < 3; i++)
-   {
-      for (int j = 0; j < 3; j++)
-      {
-         cout<<A[j][i]<<endl;
+         check = 0;
+         break;
       }
-      cout<<endl;
-      
+
    }
+
+   if (check == true)
+   {
+      cout<<"Word is a palindrome"<<endl;
+   }
+   else
+   {
+      cout<<"Word is not palindrome"<<endl;
+   }
+   
+   return 0;
    
 
 }
