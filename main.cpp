@@ -1,39 +1,38 @@
-//Checking palindrome
-
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main (){
-   int n;
-   cout<<"Enter no. of characters in your array"<<endl;
-   cin>>n;  
+//get BIT 
+int getBit(int num , int pos){
+    return ((num & (1<<pos)) != 0 );
+}
 
-   cout<<"Enter the word"<<endl;
-   char arr[n + 1];
-   cin>>arr;
+//set BIT
+int setBit(int num, int pos){
+    return (num | (1<<pos)); 
+}
 
-   bool check =true ;
+//clear BIT (Takin compliment of original bit then applying AND operator)
+int clearBit(int num , int pos){
+    int mask = ~(1<<pos);
+    return (num & mask);
+}
 
-   for (int i = 0; i < n; i++)
-   {
-      if (arr[i] != arr[n - 1 - i ])
-      {
-         check = 0;
-         break;
-      }
+//update BIT (clear the bit at the given position then set the bit to the desired value)
+int updateBit(int num , int pos ,int value){
+    int mask = ~(1<<pos);
+    num = num & mask;
+    return (num | (value<<pos));
 
-   }
+}
 
-   if (check == true)
-   {
-      cout<<"Word is a palindrome"<<endl;
-   }
-   else
-   {
-      cout<<"Word is not palindrome"<<endl;
-   }
-   
-   return 0;
-   
+int main(){
+    int num,pos;
+    cout<<getBit(5, 2)<<endl;
 
+    cout<<setBit(5,1)<<endl;
+
+    cout<<clearBit(5,2)<<endl;
+
+    cout<<updateBit(5,1,1)<<endl;
+    return 0;
 }
