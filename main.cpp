@@ -1,31 +1,33 @@
-//Printing all the subarray of an array
-
 #include <bits/stdc++.h>
 using namespace std;
 
-int main(){
-    int n;
-    cin>>n;
+void primeSieve(int n){
+    int prime[100] = {0};
 
-    int arr[n];
-    for (int i = 0; i < n; i++)
+    for (int i = 2; i <= n; i++)
     {
-        cin>>arr[i];
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = i; j < n; j++)
-        {
-            for (int k = i; k <= j; k++)
+        if(prime[i] == 0){
+            for (int j = i*i; j <= n; j+=i)
             {
-                cout<<arr[k]<<" ";
-            }cout<<endl;
+                prime[j] = 1;
+            }
             
         }
-        
     }
+    for (int i = 2; i <= n; i++)
+    {
+        if(prime[i] == 0){
+            cout<<i<<" ";
+        }
+    }cout<<endl;
     
-    
-    return 0;
+}
+
+int main(){
+
+    int n;
+    cout<<"Enter the maximum range"<<endl;
+    cin>>n;
+
+    primeSieve(n);
 }
